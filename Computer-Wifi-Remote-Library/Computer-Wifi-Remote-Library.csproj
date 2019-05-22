@@ -1,8 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Computer_Wifi_Remote_Library</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AudioSwitcher.AudioApi" Version="3.0.0" />
+    <PackageReference Include="AudioSwitcher.AudioApi.CoreAudio" Version="3.0.0.1" />
+  </ItemGroup>
 
 </Project>

@@ -13,10 +13,14 @@ namespace Computer_Wifi_Remote_Client
             {
                 ws.Connect();
                 Console.WriteLine("Client is running...");
-                Console.WriteLine("Press any key to send a test message to the server");
-                Console.ReadKey(true);
-                ws.Send(nameof(HelloWorld));
-                Console.ReadKey(true);
+                Console.WriteLine("Type a command. Type quit to exit");
+
+                var nextLine = Console.ReadLine();
+                while(nextLine.ToLowerInvariant() != "quit")
+                {
+                    ws.Send(nextLine.ToLowerInvariant());
+                    nextLine = Console.ReadLine();
+                }
             }
         }
     }
