@@ -18,7 +18,7 @@ namespace Computer_Wifi_Remote_Client
                 var nextLine = Console.ReadLine();
                 while(nextLine.ToLowerInvariant() != "quit")
                 {
-                    ws.Send(nextLine.ToLowerInvariant());
+                    Commands.ExecuteRemotely(ws, nextLine);
                     nextLine = Console.ReadLine();
                 }
             }

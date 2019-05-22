@@ -3,6 +3,7 @@ using Computer_Wifi_Remote.Command;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using WebSocketSharp;
 
 namespace Computer_Wifi_Remote_Library.Command
 {

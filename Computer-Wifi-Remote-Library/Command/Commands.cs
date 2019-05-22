@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using WebSocketSharp;
 
 namespace Computer_Wifi_Remote.Command
 {
@@ -30,6 +31,11 @@ namespace Computer_Wifi_Remote.Command
             }
 
             return null;
+        }
+
+        public static void ExecuteRemotely(WebSocket webSocket, string name)
+        {
+            webSocket.Send(name);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using WebSocketSharp;
 
 namespace Computer_Wifi_Remote.Command
 {
