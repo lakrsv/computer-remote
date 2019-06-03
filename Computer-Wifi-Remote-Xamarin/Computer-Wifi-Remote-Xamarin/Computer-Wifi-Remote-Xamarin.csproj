@@ -14,4 +14,14 @@
     <PackageReference Include="Xamarin.Forms" Version="4.0.0.482894" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Computer-Wifi-Remote-Library\Computer-Wifi-Remote-Library.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\ConnectPage.xaml.cs">
+      <DependentUpon>ConnectPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>

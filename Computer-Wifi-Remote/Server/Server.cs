@@ -9,7 +9,7 @@ namespace Computer_Wifi_Remote.Server
 
         public Server()
         {
-            webSocketServer = new WebSocketServer("ws://localhost:34198");
+            webSocketServer = new WebSocketServer("ws://192.168.1.113:34198");
             webSocketServer.AddWebSocketService<CommandService>("/command");
             webSocketServer.Start();
         }
