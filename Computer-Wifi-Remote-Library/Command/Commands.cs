@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Computer_Wifi_Remote_Library;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +14,6 @@ namespace Computer_Wifi_Remote.Command
 
         static Commands()
         {
-            Console.WriteLine("Initializing!");
-
             var commandType = typeof(ICommand);
             commands = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(s => s.GetTypes())
@@ -33,9 +33,9 @@ namespace Computer_Wifi_Remote.Command
             return null;
         }
 
-        public static void ExecuteRemotely(WebSocket webSocket, string name)
+        public static void ExecuteRemotely(WebSocket webSocket, Request request)
         {
-            webSocket.Send(name);
+            webSocket.Send(JsonConvert.SerializeObject(request));
         }
     }
 }

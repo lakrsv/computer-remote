@@ -7,7 +7,7 @@ namespace Computer_Wifi_Remote_Library.Command
     {
         public string Name => nameof(HelloWorld);
 
-        public bool Execute()
+        public bool Execute(Request request)
         {
             Console.WriteLine("Hello World!");
             return true;

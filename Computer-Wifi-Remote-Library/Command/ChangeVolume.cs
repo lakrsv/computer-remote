@@ -3,24 +3,25 @@ using Computer_Wifi_Remote.Command;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using WebSocketSharp;
 
 namespace Computer_Wifi_Remote_Library.Command
 {
-    public class VolumeDown : ICommand
+    public class ChangeVolume : ICommand
     {
-        public string Name => nameof(VolumeDown);
+        public string Name => nameof(ChangeVolume);
 
         private CoreAudioDevice defaultPlaybackDevice;
 
-        public bool Execute()
+        public bool Execute(Request request)
         {
+            if (!int.TryParse(request.Parameters[0], out int volumeChange)) return false;
+
             if (defaultPlaybackDevice == null)
             {
                 defaultPlaybackDevice = new CoreAudioController().GetDefaultDevice(AudioSwitcher.AudioApi.DeviceType.Playback, AudioSwitcher.AudioApi.Role.Multimedia);
             }
 
-            defaultPlaybackDevice.Volume -= 5;
+            defaultPlaybackDevice.Volume += volumeChange;
             return true;
         }
     }

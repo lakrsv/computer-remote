@@ -1,4 +1,5 @@
 ﻿using Computer_Wifi_Remote.Command;
+using Computer_Wifi_Remote_Library;
 using Computer_Wifi_Remote_Library.Command;
 using System;
 using WebSocketSharp;
@@ -18,7 +19,8 @@ namespace Computer_Wifi_Remote_Client
                 var nextLine = Console.ReadLine();
                 while(nextLine.ToLowerInvariant() != "quit")
                 {
-                    Commands.ExecuteRemotely(ws, nextLine);
+                    var commands = nextLine.Split(' ');
+                    Commands.ExecuteRemotely(ws, new Request(commands[0], commands.SubArray(1, commands.Length - 1)));
                     nextLine = Console.ReadLine();
                 }
             }

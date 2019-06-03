@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Computer_Wifi_Remote_Library;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using WebSocketSharp;
@@ -13,6 +14,6 @@ namespace Computer_Wifi_Remote.Command
         /// Execute the command
         /// </summary>
         /// <returns>Whether the command executed successfully</returns>
-        bool Execute();
+        bool Execute(Request request);
     }
 }

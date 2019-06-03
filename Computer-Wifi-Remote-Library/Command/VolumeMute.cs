@@ -13,14 +13,17 @@ namespace Computer_Wifi_Remote_Library.Command
 
         private CoreAudioDevice defaultPlaybackDevice;
 
-        public bool Execute()
+        public bool Execute(Request request)
         {
+            if (!bool.TryParse(request.Parameters[0], out bool mute)) return false;
+
             if (defaultPlaybackDevice == null)
             {
                 defaultPlaybackDevice = new CoreAudioController().GetDefaultDevice(AudioSwitcher.AudioApi.DeviceType.Playback, AudioSwitcher.AudioApi.Role.Multimedia);
             }
 
-            defaultPlaybackDevice.Mute(true);
+
+            defaultPlaybackDevice.Mute(mute);
             return true;
         }
     }

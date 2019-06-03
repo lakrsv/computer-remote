@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Computer_Wifi_Remote_Library;
+using System;
 using System.Diagnostics;
 
 namespace Computer_Wifi_Remote.Command
@@ -7,7 +8,7 @@ namespace Computer_Wifi_Remote.Command
     {
         public string Name => nameof(Restart);
 
-        public bool Execute()
+        public bool Execute(Request request)
         {
             var psi = new ProcessStartInfo("shutdown", "/r /t 0");
             psi.CreateNoWindow = true;

@@ -1,4 +1,6 @@
 ﻿using Computer_Wifi_Remote.Command;
+using Computer_Wifi_Remote_Library;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,11 +13,11 @@ namespace Computer_Wifi_Remote.Server
     {
         protected override void OnMessage(MessageEventArgs e)
         {
-            var message = e.Data;
-            var command = Commands.GetCommand(message);
-            if(command != null)
+            var request = JsonConvert.DeserializeObject<Request>(e.Data);
+            var command = Commands.GetCommand(request.Command);
+            if (command != null)
             {
-                command.Execute();
+                command.Execute(request);
             }
         }
     }
