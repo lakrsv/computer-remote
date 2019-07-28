@@ -30,5 +30,22 @@ namespace Xamarin.Views.Actions
         {
             Commands.ExecuteRemotely(ClientConnection.Instance.WebSocket, new Request(nameof(MuteVolume), e.Value.ToString()));
         }
+
+        private void OnNextTrackClicked(object sender, EventArgs e)
+        {
+            Commands.ExecuteRemotely(ClientConnection.Instance.WebSocket, new Request(nameof(NextTrack)));
+
+        }
+
+        private void OnPreviousTrackClicked(object sender, EventArgs e)
+        {
+            Commands.ExecuteRemotely(ClientConnection.Instance.WebSocket, new Request(nameof(PreviousTrack)));
+
+        }
+
+        private void OnPlayPauseClicked(object sender, EventArgs e)
+        {
+            Commands.ExecuteRemotely(ClientConnection.Instance.WebSocket, new Request(nameof(PlayStop)));
+        }
     }
 }

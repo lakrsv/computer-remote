@@ -1,4 +1,6 @@
-﻿using System;
+﻿#define WINDOWS
+
+using System;
 using System.Threading.Tasks;
 
 namespace Computer_Wifi_Remote

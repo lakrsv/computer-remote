@@ -24,7 +24,6 @@ namespace Computer_Wifi_Remote_Library.Command
             }
 
             defaultPlaybackDevice.AudioEndpointVolume.MasterVolumeLevelScalar = volumeChange;
-
             return true;
         }
     }

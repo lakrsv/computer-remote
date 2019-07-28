@@ -34,6 +34,21 @@
                         </Label.FormattedText>
                     </Label>
                     <Switch Toggled="Switch_Toggled"></Switch>
+                    <Button Text="Next Track" 
+                            Margin="0,10,0,0"
+                            Clicked="OnNextTrackClicked"
+                            BackgroundColor="{StaticResource Primary}"
+                            TextColor="White"/>
+                    <Button Text="Previous Track" 
+                            Margin="0,10,0,0"
+                            Clicked="OnPreviousTrackClicked"
+                            BackgroundColor="{StaticResource Primary}"
+                            TextColor="White"/>
+                    <Button Text="Play/Pause" 
+                            Margin="0,10,0,0"
+                            Clicked="OnPlayPauseClicked"
+                            BackgroundColor="{StaticResource Primary}"
+                            TextColor="White"/>
                 </StackLayout>
             </ScrollView>
             </Grid>
