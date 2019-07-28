@@ -1,21 +1,17 @@
 ﻿using Computer_Wifi_Remote.Command;
 using NAudio.CoreAudioApi;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
 
 namespace Computer_Wifi_Remote_Library.Command
 {
-    public class ChangeVolume : ICommand
+    public class MuteVolume : ICommand
     {
-        public string Name => nameof(ChangeVolume);
+        public string Name => nameof(MuteVolume);
 
         private MMDevice defaultPlaybackDevice;
 
         public bool Execute(Request request)
         {
-            if (!float.TryParse(request.Parameters[0], out float volumeChange)) return false;
+            if (!bool.TryParse(request.Parameters[0], out bool mute)) return false;
 
             if (defaultPlaybackDevice == null)
             {
@@ -23,7 +19,7 @@ namespace Computer_Wifi_Remote_Library.Command
                 defaultPlaybackDevice = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
             }
 
-            defaultPlaybackDevice.AudioEndpointVolume.MasterVolumeLevelScalar = volumeChange;
+            defaultPlaybackDevice.AudioEndpointVolume.Mute = mute;
 
             return true;
         }

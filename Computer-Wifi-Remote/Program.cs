@@ -5,7 +5,7 @@ namespace Computer_Wifi_Remote
 {
     class Program
     {
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
             var server = new Server.Server();
             server.Start();
