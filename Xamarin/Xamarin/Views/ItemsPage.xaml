@@ -5,12 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="Computer_Wifi_Remote_Xamarin.Views.ItemsPage"
-             Title="{Binding Title}"
+             Title="Actions"
              x:Name="BrowseItemsPage">
-
-    <!--<ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Clicked="AddItem_Clicked" />
-    </ContentPage.ToolbarItems>-->
 
     <StackLayout>
         <ListView x:Name="ItemsListView"
@@ -24,12 +20,9 @@
                 ItemSelected="OnItemSelected">
             <d:ListView.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
-                    <x:String>First Item</x:String>
-                    <x:String>Second Item</x:String>
-                    <x:String>Third Item</x:String>
-                    <x:String>Forth Item</x:String>
-                    <x:String>Fifth Item</x:String>
-                    <x:String>Sixth Item</x:String>
+                    <x:String>Hello World</x:String>
+                    <x:String>Media Control</x:String>
+                    <x:String>System Control</x:String>
                 </x:Array>
             </d:ListView.ItemsSource>
             <ListView.ItemTemplate>

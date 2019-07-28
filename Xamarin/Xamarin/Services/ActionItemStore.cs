@@ -3,30 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Computer_Wifi_Remote_Xamarin.Models;
+using Xamarin.Views.Actions;
 
 namespace Computer_Wifi_Remote_Xamarin.Services
 {
-    public class MockDataStore : IDataStore<Item>
+    public class ActionItemStore : IDataStore<Item>
     {
         List<Item> items;
 
-        public MockDataStore()
+        public ActionItemStore()
         {
-            items = new List<Item>();
-            var mockItems = new List<Item>
+            items = new List<Item>
             {
-                new Item { Id = Guid.NewGuid().ToString(), Text = "First item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Second item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Third item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Fourth item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Fifth item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Sixth item", Description="This is an item description." }
+                new Item { Id = Guid.NewGuid().ToString(), Text = "Hello World", Description="Sends Hello World to the server.", Page = new HelloWorldPage() },
+                new Item { Id = Guid.NewGuid().ToString(), Text = "Media Control", Description="Various controls for media.", Page=new MediaControlPage() },
+                new Item { Id = Guid.NewGuid().ToString(), Text = "System Control", Description="Various controls for the system.", Page=new SystemControlPage() },
             };
-
-            foreach (var item in mockItems)
-            {
-                items.Add(item);
-            }
         }
 
         public async Task<bool> AddItemAsync(Item item)

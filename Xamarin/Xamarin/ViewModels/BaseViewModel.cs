@@ -12,7 +12,7 @@ namespace Computer_Wifi_Remote_Xamarin.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>() ?? new MockDataStore();
+        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>() ?? new ActionItemStore();
 
         bool isBusy = false;
         public bool IsBusy

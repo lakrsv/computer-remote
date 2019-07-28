@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Xamarin.Views.Actions.SystemControlPage"
+             Title="System Control">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ScrollView Grid.Row="1">
+                <StackLayout Orientation="Vertical" VerticalOptions="End" Padding="16,40,16,40" Spacing="10">
+                    <Button Text="Restart" 
+                            Margin="0,10,0,0"
+                            Clicked="Restart_Clicked"
+                            BackgroundColor="{StaticResource Primary}"
+                            TextColor="White"/>
+                    <Button Text="Shutdown" 
+                            Margin="0,10,0,0"
+                            Clicked="Shutdown_Clicked"
+                            BackgroundColor="{StaticResource Primary}"
+                            TextColor="White"/>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -14,7 +14,7 @@ namespace Computer_Wifi_Remote_Xamarin
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
+            DependencyService.Register<ActionItemStore>();
             MainPage = new MainPage();
         }
 

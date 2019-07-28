@@ -18,8 +18,9 @@ namespace Computer_Wifi_Remote_Xamarin.Services
             }
         }
 
-        private WebSocket webSocket;
-        public bool IsConnected { get { return webSocket != null && webSocket.IsAlive; } }
+        public bool IsConnected { get { return WebSocket != null && WebSocket.IsAlive; } }
+
+        public WebSocket WebSocket { get; private set; }
 
         private ClientConnection()
         {
@@ -28,10 +29,10 @@ namespace Computer_Wifi_Remote_Xamarin.Services
 
         public bool Connect(string ip)
         {
-            webSocket = new WebSocket("ws://" + ip + ":34198/command");
+            WebSocket = new WebSocket("ws://" + ip + ":34198/command");
             // webSocket = new WebSocket("ws://echo.websocket.org");
-            webSocket.Connect();
-            return webSocket.IsAlive;
+            WebSocket.Connect();
+            return WebSocket.IsAlive;
         }
     }
 }
