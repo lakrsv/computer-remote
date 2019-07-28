@@ -19,6 +19,7 @@ namespace Computer_Wifi_Remote_Xamarin.Services
         }
 
         private WebSocket webSocket;
+        public bool IsConnected { get { return webSocket != null && webSocket.IsAlive; } }
 
         private ClientConnection()
         {

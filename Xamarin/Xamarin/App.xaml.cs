@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Computer_Wifi_Remote_Xamarin.Services;
 using Computer_Wifi_Remote_Xamarin.Views;
+using Xamarin.Essentials;
 
 namespace Computer_Wifi_Remote_Xamarin
 {

@@ -18,7 +18,7 @@
                 <views:ConnectPage />
             </x:Arguments>
         </NavigationPage>
-        <NavigationPage Title="Browse">
+        <!--<NavigationPage Title="Browse">
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="iOS" Value="tab_feed.png"/>
@@ -27,7 +27,7 @@
             <x:Arguments>
                 <views:ItemsPage />
             </x:Arguments>
-        </NavigationPage>
+        </NavigationPage>-->
     </TabbedPage.Children>
     
 </TabbedPage>

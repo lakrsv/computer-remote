@@ -104,9 +104,9 @@
     <Folder Include="Resources\drawable-xxxhdpi\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Computer-Wifi-Remote-Xamarin\Computer-Wifi-Remote-Xamarin.csproj">
+    <ProjectReference Include="..\Xamarin\Xamarin.csproj">
       <Project>{b80b869a-98d7-493b-a532-708a4546f86e}</Project>
-      <Name>Computer-Wifi-Remote-Xamarin</Name>
+      <Name>Xamarin</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

@@ -55,7 +55,7 @@
                     </Label.FormattedText>
                 </Label>
                 <Entry x:Name="IPAddress" Placeholder="IP Address" PlaceholderColor="{StaticResource LightTextColor}" Keyboard="Telephone"/>
-                <Button Margin="0,10,0,0" Text="Connect"
+                <Button Margin="0,10,0,0" Text="Connect" x:Name="Connect"
                         Command="{Binding ConnectCommand}"
                         CommandParameter="{Binding Source={x:Reference IPAddress}, Path=Text}"
                         BackgroundColor="{StaticResource Primary}"

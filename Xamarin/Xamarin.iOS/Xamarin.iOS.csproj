@@ -138,7 +138,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\Computer_Wifi_Remote_Xamarin\Computer_Wifi_Remote_Xamarin.csproj">
+    <ProjectReference Include="..\Xamarin\Xamarin.csproj">
       <Project>{DB009D20-AF7F-47C1-B1CA-F8ED5FE3AF26}</Project>
       <Name>Computer_Wifi_Remote_Xamarin</Name>
     </ProjectReference>
