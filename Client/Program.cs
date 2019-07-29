@@ -13,7 +13,7 @@ namespace Computer_Wifi_Remote_Client
             Console.WriteLine("Press any key to connect...");
             Console.ReadKey();
 
-            using(var ws = new WebSocket("ws://192.168.1.113:34198/command"))
+            using(var ws = new WebSocket("ws://localhost:34198/command"))
             {
                 ws.Connect();
                 Console.WriteLine("Client is running...");
