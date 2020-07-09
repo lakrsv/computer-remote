@@ -44,6 +44,8 @@ namespace Server
             menuStrip.Items.Add(exit);
 
             notifyIcon.ContextMenuStrip = menuStrip;
+
+            Connect_Click(null, null);
         }
 
         private void Connect_Click(object sender, EventArgs e)
@@ -51,6 +53,7 @@ namespace Server
             using (var form = new Form())
             {
                 form.Text = "Connect";
+                form.Size = new System.Drawing.Size(512, 512);
 
                 Bitmap qrCodeImage;
                 using (var ms = new MemoryStream(server.ConnectionCode.GetGraphic(20)))
@@ -60,7 +63,8 @@ namespace Server
 
                 var label = new System.Windows.Forms.Label()
                 {
-                    Text = "Scan the QR code with your mobile application\nto remote control this device",
+                    Text = "Scan the QR code with your mobile application to remote control this device.\n" +
+                    "You can close this window and re-open it from the tray icon.",
                     AutoSize = true,
                 };
 
@@ -72,7 +76,7 @@ namespace Server
                 };
                 var panel = new System.Windows.Forms.TableLayoutPanel()
                 {
-                    Padding = new Padding(5),
+                    Padding = new Padding(10),
                     Dock = DockStyle.Fill
                 };
                 panel.Controls.Add(label);

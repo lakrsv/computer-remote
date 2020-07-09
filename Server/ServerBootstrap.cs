@@ -1,6 +1,8 @@
-﻿using QRCoder;
+﻿using Microsoft.Win32;
+using QRCoder;
 using Server.Http;
 using Server.Security;
+using System.Windows.Forms;
 using WebSocketSharp.Server;
 namespace Server
 {
@@ -11,6 +13,8 @@ namespace Server
 
         public ServerBootstrap()
         {
+            SetStartup();
+
             webSocketServer = new WebSocketServer(34198, true);
             webSocketServer.AddWebSocketService<CommandService>("/command");
             var certificateStore = CertificateStore.HasCertificate() ?
@@ -30,6 +34,12 @@ namespace Server
         public void Stop()
         {
             webSocketServer.Stop();
+        }
+
+        private void SetStartup()
+        {
+            RegistryKey rk = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            rk.SetValue("Temporalis WindowsRemote", Application.ExecutablePath);
         }
 
         //[DllImport("kernel32.dll")]
