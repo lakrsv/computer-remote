@@ -28,7 +28,7 @@ namespace Server
             server.Start();
 
             notifyIcon = new NotifyIcon();
-            notifyIcon.Icon = new Icon("Resources/icons8-check-all-64.ico");
+            notifyIcon.Icon = new Icon("Resources/icons8-remote-control-32.ico");
             notifyIcon.Visible = true;
             notifyIcon.Text = "Server running!";
 
