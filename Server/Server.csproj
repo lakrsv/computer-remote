@@ -50,7 +50,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\icons8-remote-control-32.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\icons8-remote-control-dark-32.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="NAudio, Version=1.9.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -158,6 +158,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\icons8-remote-control-32.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\icons8-remote-control-dark-32.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
