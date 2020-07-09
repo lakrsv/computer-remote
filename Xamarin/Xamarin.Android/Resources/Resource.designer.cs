@@ -2120,6 +2120,9 @@ namespace Computer_Wifi_Remote_Xamarin.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ViewStubCompat_android_id = global::Computer_Wifi_Remote_Xamarin.Droid.Resource.Styleable.ViewStubCompat_android_id;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ViewStubCompat_android_inflatedId = global::Computer_Wifi_Remote_Xamarin.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ViewStubCompat_android_layout = global::Computer_Wifi_Remote_Xamarin.Droid.Resource.Styleable.ViewStubCompat_android_layout;
+			global::ZXing.Mobile.Resource.Id.contentFrame = global::Computer_Wifi_Remote_Xamarin.Droid.Resource.Id.contentFrame;
+			global::ZXing.Mobile.Resource.Layout.zxingscanneractivitylayout = global::Computer_Wifi_Remote_Xamarin.Droid.Resource.Layout.zxingscanneractivitylayout;
+			global::ZXing.Mobile.Resource.Layout.zxingscannerfragmentlayout = global::Computer_Wifi_Remote_Xamarin.Droid.Resource.Layout.zxingscannerfragmentlayout;
 		}
 		
 		public partial class Animation
@@ -5282,6 +5285,9 @@ namespace Computer_Wifi_Remote_Xamarin.Droid
 			// aapt resource value: 0x7f0a008f
 			public const int container = 2131361935;
 			
+			// aapt resource value: 0x7f0a00d4
+			public const int contentFrame = 2131362004;
+			
 			// aapt resource value: 0x7f0a0066
 			public const int contentPanel = 2131361894;
 			
@@ -5423,8 +5429,8 @@ namespace Computer_Wifi_Remote_Xamarin.Droid
 			// aapt resource value: 0x7f0a00cb
 			public const int main_toolbar = 2131361995;
 			
-			// aapt resource value: 0x7f0a00d5
-			public const int masked = 2131362005;
+			// aapt resource value: 0x7f0a00d6
+			public const int masked = 2131362006;
 			
 			// aapt resource value: 0x7f0a00bd
 			public const int media_actions = 2131361981;
@@ -5768,8 +5774,8 @@ namespace Computer_Wifi_Remote_Xamarin.Droid
 			// aapt resource value: 0x7f0a0016
 			public const int view_offset_helper = 2131361814;
 			
-			// aapt resource value: 0x7f0a00d4
-			public const int visible = 2131362004;
+			// aapt resource value: 0x7f0a00d5
+			public const int visible = 2131362005;
 			
 			// aapt resource value: 0x7f0a00af
 			public const int volume_item_container = 2131361967;
@@ -6079,6 +6085,12 @@ namespace Computer_Wifi_Remote_Xamarin.Droid
 			
 			// aapt resource value: 0x7f040047
 			public const int tooltip = 2130968647;
+			
+			// aapt resource value: 0x7f040048
+			public const int zxingscanneractivitylayout = 2130968648;
+			
+			// aapt resource value: 0x7f040049
+			public const int zxingscannerfragmentlayout = 2130968649;
 			
 			static Layout()
 			{

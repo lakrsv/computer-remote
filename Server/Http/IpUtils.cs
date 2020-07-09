@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Net;
+using System.Net.Sockets;
 
 namespace Server.Http
 {
@@ -7,10 +8,14 @@ namespace Server.Http
     {
         public static string GetLocalIpAddress()
         {
-            var hostName = Dns.GetHostName();
-            var ipEntry = Dns.GetHostEntry(hostName);
-            var addr = ipEntry.AddressList.First(x => x.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork).ToString();
-            return addr;
+            string localIP;
+            using (var socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, 0))
+            {
+                socket.Connect("8.8.8.8", 65530);
+                IPEndPoint endPoint = socket.LocalEndPoint as IPEndPoint;
+                localIP = endPoint.Address.ToString();
+            }
+            return localIP;
         }
     }
 }

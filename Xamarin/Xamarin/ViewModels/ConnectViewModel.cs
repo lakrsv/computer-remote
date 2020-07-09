@@ -9,13 +9,6 @@ namespace Computer_Wifi_Remote_Xamarin.ViewModels
         public ConnectViewModel()
         {
             Title = "Connect";
-
-            ConnectCommand = new Command(ipAddress =>
-            {
-                Services.ClientConnection.Instance.Connect(ipAddress as string);
-            });
         }
-
-        public ICommand ConnectCommand { get; }
     }
 }

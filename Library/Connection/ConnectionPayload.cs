@@ -11,7 +11,7 @@ namespace Computer_Wifi_Remote_Library.Connection
 
         public string CreateConnectionString()
         {
-            return $"{Scheme}:{Url}:{Port}";
+            return $@"{Scheme}://{Url}:{Port}/command";
         }
 
         public ConnectionPayload(string scheme, string url, int port, string authenticationUsername, string authenticationPassword)

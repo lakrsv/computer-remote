@@ -1,4 +1,5 @@
 ﻿using QRCoder;
+using Server.Http;
 using Server.Security;
 using WebSocketSharp.Server;
 namespace Server
@@ -10,13 +11,12 @@ namespace Server
 
         public ServerBootstrap()
         {
-            webSocketServer = new WebSocketServer("wss://0.0.0.0:34198");
+            webSocketServer = new WebSocketServer(34198, true);
             webSocketServer.AddWebSocketService<CommandService>("/command");
             var certificateStore = CertificateStore.HasCertificate() ?
                 CertificateStore.LoadCertificate() :
                 CertificateStore.CreateCertificate();
             webSocketServer.SslConfiguration.ServerCertificate = certificateStore.Certificate;
-
             var authentication = new Authentication();
             authentication.SetAuthentication(webSocketServer);
             ConnectionCode = authentication.GetConnectionQRCode();

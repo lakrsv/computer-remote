@@ -19,29 +19,29 @@ namespace Xamarin.Views.Actions
 
         private void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
         {
-            Commands.ExecuteRemotely(ClientConnection.Instance.WebSocket, new Request(nameof(ChangeVolume), ((float)e.NewValue).ToString()));
+            Commands.ExecuteRemotely(ClientConnection.Instance.Connection, new Request(nameof(ChangeVolume), ((float)e.NewValue).ToString()));
         }
 
         private void Switch_Toggled(object sender, ToggledEventArgs e)
         {
-            Commands.ExecuteRemotely(ClientConnection.Instance.WebSocket, new Request(nameof(MuteVolume), e.Value.ToString()));
+            Commands.ExecuteRemotely(ClientConnection.Instance.Connection, new Request(nameof(MuteVolume), e.Value.ToString()));
         }
 
         private void OnNextTrackClicked(object sender, EventArgs e)
         {
-            Commands.ExecuteRemotely(ClientConnection.Instance.WebSocket, new Request(nameof(NextTrack)));
+            Commands.ExecuteRemotely(ClientConnection.Instance.Connection, new Request(nameof(NextTrack)));
 
         }
 
         private void OnPreviousTrackClicked(object sender, EventArgs e)
         {
-            Commands.ExecuteRemotely(ClientConnection.Instance.WebSocket, new Request(nameof(PreviousTrack)));
+            Commands.ExecuteRemotely(ClientConnection.Instance.Connection, new Request(nameof(PreviousTrack)));
 
         }
 
         private void OnPlayPauseClicked(object sender, EventArgs e)
         {
-            Commands.ExecuteRemotely(ClientConnection.Instance.WebSocket, new Request(nameof(PlayStop)));
+            Commands.ExecuteRemotely(ClientConnection.Instance.Connection, new Request(nameof(PlayStop)));
         }
     }
 }

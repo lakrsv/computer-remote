@@ -1,4 +1,6 @@
-﻿using WebSocketSharp;
+﻿using Computer_Wifi_Remote_Library.Connection;
+using System;
+using WebSocketSharp;
 
 namespace Computer_Wifi_Remote_Xamarin.Services
 {
@@ -15,21 +17,19 @@ namespace Computer_Wifi_Remote_Xamarin.Services
             }
         }
 
-        public bool IsConnected { get { return WebSocket != null && WebSocket.IsAlive; } }
+        public bool IsConnected { get { return Connection != null && Connection.IsAlive; } }
 
-        public WebSocket WebSocket { get; private set; }
+        public IConnection Connection { get; private set; }
 
         private ClientConnection()
         {
 
         }
 
-        public bool Connect(string ip)
+        public bool Connect(ConnectionPayload connectionPayload)
         {
-            WebSocket = new WebSocket("ws://" + ip + ":34198/command");
-            // webSocket = new WebSocket("ws://echo.websocket.org");
-            WebSocket.Connect();
-            return WebSocket.IsAlive;
+            Connection = ConnectionFactory.GetConnection(connectionPayload);
+            return Connection.IsAlive;
         }
     }
 }

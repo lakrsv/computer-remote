@@ -17,6 +17,8 @@ namespace Computer_Wifi_Remote_Library.Connection
             this.webSocket.Connect();
         }
 
+        public bool IsAlive => webSocket.IsAlive;
+
         public void Send(string command)
         {
             webSocket.Send(command);

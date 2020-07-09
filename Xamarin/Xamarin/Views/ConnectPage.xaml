@@ -49,15 +49,18 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="To get started, connect to your computer" />
+                                <Span Text="To get started, connect to your computer by scanning the QR code" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Entry x:Name="IPAddress" Placeholder="IP Address" PlaceholderColor="{StaticResource LightTextColor}" Keyboard="Telephone"/>
-                <Button Margin="0,10,0,0" Text="Connect" x:Name="Connect"
+                <!--<Entry x:Name="IPAddress" Placeholder="IP Address" PlaceholderColor="{StaticResource LightTextColor}" Keyboard="Telephone"/>-->
+                <!--<Button Margin="0,10,0,0" Text="Connect" x:Name="Connect"
                         Command="{Binding ConnectCommand}"
                         CommandParameter="{Binding Source={x:Reference IPAddress}, Path=Text}"
+                        BackgroundColor="{StaticResource Primary}"
+                        TextColor="White" />-->
+                <Button Margin="0,10,0,0" Text="Connect" x:Name="Connect"
                         BackgroundColor="{StaticResource Primary}"
                         TextColor="White" />
             </StackLayout>

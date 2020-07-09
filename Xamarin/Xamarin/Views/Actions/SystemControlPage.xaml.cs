@@ -18,12 +18,12 @@ namespace Xamarin.Views.Actions
 
         private void Restart_Clicked(object sender, EventArgs e)
         {
-            Commands.ExecuteRemotely(ClientConnection.Instance.WebSocket, new Request(nameof(Restart)));
+            Commands.ExecuteRemotely(ClientConnection.Instance.Connection, new Request(nameof(Restart)));
         }
 
         private void Shutdown_Clicked(object sender, EventArgs e)
         {
-            Commands.ExecuteRemotely(ClientConnection.Instance.WebSocket, new Request(nameof(Shutdown)));
+            Commands.ExecuteRemotely(ClientConnection.Instance.Connection, new Request(nameof(Shutdown)));
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Xamarin.Views.Actions
 
         private void ExecuteButton_Clicked(object sender, EventArgs e)
         {
-            Commands.ExecuteRemotely(ClientConnection.Instance.WebSocket, new Request(nameof(HelloWorld)));
+            Commands.ExecuteRemotely(ClientConnection.Instance.Connection, new Request(nameof(HelloWorld)));
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿#define LOCAL
+﻿//#define LOCAL
 
 using Computer_Wifi_Remote_Library;
 using Computer_Wifi_Remote_Library.Connection;
@@ -19,7 +19,7 @@ namespace Server.Security
 
         private bool HasToken()
         {
-            return Environment.GetEnvironmentVariable(TOKEN_ENVIRONMENT_KEY) != null;
+            return Environment.GetEnvironmentVariable(TOKEN_ENVIRONMENT_KEY, EnvironmentVariableTarget.User) != null;
         }
 
         private string LoadToken()
@@ -28,7 +28,7 @@ namespace Server.Security
             {
                 throw new InvalidOperationException("No token exists, please create a token prior to attempting to load it.");
             }
-            return Environment.GetEnvironmentVariable(TOKEN_ENVIRONMENT_KEY);
+            return Environment.GetEnvironmentVariable(TOKEN_ENVIRONMENT_KEY, EnvironmentVariableTarget.User);
         }
 
         private string CreateToken()
@@ -40,15 +40,14 @@ namespace Server.Security
             }
 
             string hexToken = BitConverter.ToString(bytes).Replace("-", "").ToLower();
-            Environment.SetEnvironmentVariable(TOKEN_ENVIRONMENT_KEY, hexToken);
-
+            Environment.SetEnvironmentVariable(TOKEN_ENVIRONMENT_KEY, hexToken, EnvironmentVariableTarget.User);
             return hexToken;
         }
 
         public void SetAuthentication(WebSocketServer webSocketServer)
         {
             var password = HasToken() ? LoadToken() : CreateToken();
-            var connectionPayload = new ConnectionPayload("wss", IpUtils.GetLocalIpAddress(), 34198, "user", password);
+            var connectionPayload = new ConnectionPayload(webSocketServer.IsSecure ? "wss" : "ws", IpUtils.GetLocalIpAddress(), webSocketServer.Port, "user", password);
 
             QRCodeGenerator qrGenerator = new QRCodeGenerator();
             var qrCodeData = qrGenerator.CreateQrCode(JsonConvert.SerializeObject(connectionPayload), QRCodeGenerator.ECCLevel.Q);
