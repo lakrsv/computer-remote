@@ -19,12 +19,11 @@ namespace Computer_Wifi_Remote.Command
                 .SelectMany(s => s.GetTypes())
                 .Where(p => commandType.IsAssignableFrom(p) && !p.IsInterface && !p.IsAbstract)
                 .Select(t => (ICommand)Activator.CreateInstance(t))
-                .ToDictionary(k => k.Name.ToLowerInvariant());
+                .ToDictionary(k => k.Name, StringComparer.InvariantCultureIgnoreCase);
         }
 
         public static ICommand GetCommand(string name)
         {
-            name = name.ToLowerInvariant();
             if (commands.ContainsKey(name))
             {
                 return commands[name];
