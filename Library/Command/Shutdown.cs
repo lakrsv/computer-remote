@@ -1,7 +1,5 @@
 ﻿using Computer_Wifi_Remote_Library;
-using System;
 using System.Diagnostics;
-using WebSocketSharp;
 
 namespace Computer_Wifi_Remote.Command
 {

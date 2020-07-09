@@ -1,19 +1,25 @@
-﻿using System;
-using System.Runtime.InteropServices;
+﻿using QRCoder;
+using Server.Security;
 using WebSocketSharp.Server;
 namespace Server
 {
     public class ServerBootstrap
     {
+        public PngByteQRCode ConnectionCode { get; private set; }
         private WebSocketServer webSocketServer;
 
         public ServerBootstrap()
         {
-            webSocketServer = new WebSocketServer("ws://0.0.0.0:34198");
+            webSocketServer = new WebSocketServer("wss://0.0.0.0:34198");
             webSocketServer.AddWebSocketService<CommandService>("/command");
-            webSocketServer.Start();
+            var certificateStore = CertificateStore.HasCertificate() ?
+                CertificateStore.LoadCertificate() :
+                CertificateStore.CreateCertificate();
+            webSocketServer.SslConfiguration.ServerCertificate = certificateStore.Certificate;
 
-            //ShowWindow(GetConsoleWindow(), SW_HIDE);
+            var authentication = new Authentication();
+            authentication.SetAuthentication(webSocketServer);
+            ConnectionCode = authentication.GetConnectionQRCode();
         }
 
         public void Start()

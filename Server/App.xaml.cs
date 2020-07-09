@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Net;
-using System.Reflection;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Forms;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace Server
 {
@@ -37,11 +34,11 @@ namespace Server
 
             var menuStrip = new ContextMenuStrip();
             var help = new ToolStripMenuItem("Help");
-            help.Name = "Help";
+            help.Name = "Connect";
             var exit = new ToolStripMenuItem("Exit");
             exit.Name = "Exit";
-            help.Click += Help_Click;
-            exit.Click += (o, args) => System.Windows.Application.Current.Shutdown(0);
+            help.Click += Connect_Click;
+            exit.Click += (o, args) => Current.Shutdown(0);
 
             menuStrip.Items.Add(help);
             menuStrip.Items.Add(exit);
@@ -49,12 +46,73 @@ namespace Server
             notifyIcon.ContextMenuStrip = menuStrip;
         }
 
-        private void Help_Click(object sender, EventArgs e)
+        private void Connect_Click(object sender, EventArgs e)
         {
-            var hostName = Dns.GetHostName();
-            var ipEntry = Dns.GetHostEntry(hostName);
-            var addr = ipEntry.AddressList.First(x => x.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork).ToString();
-            System.Windows.MessageBox.Show("To connect to your device, use your smartphone client and enter " + addr);
+            using (var form = new Form())
+            {
+                form.Text = "Connect";
+
+                Bitmap qrCodeImage;
+                using (var ms = new MemoryStream(server.ConnectionCode.GetGraphic(20)))
+                {
+                    qrCodeImage = new Bitmap(ms);
+                }
+
+                var label = new System.Windows.Forms.Label()
+                {
+                    Text = "Scan the QR code with your mobile application\nto remote control this device",
+                    AutoSize = true,
+                };
+
+                var pictureBox = new PictureBox()
+                {
+                    Image = qrCodeImage,
+                    SizeMode = PictureBoxSizeMode.Zoom,
+                    Dock = DockStyle.Fill,
+                };
+                var panel = new System.Windows.Forms.TableLayoutPanel()
+                {
+                    Padding = new Padding(5),
+                    Dock = DockStyle.Fill
+                };
+                panel.Controls.Add(label);
+                panel.Controls.Add(pictureBox);
+                form.Controls.Add(panel);
+                form.ShowDialog();
+            }
+        }
+
+        private StackPanel CreateUI(string imagePath, string username)
+        {
+            StackPanel userStack = new StackPanel()
+            {
+                Orientation = System.Windows.Controls.Orientation.Horizontal,
+                HorizontalAlignment = System.Windows.HorizontalAlignment.Left,
+                Margin = new Thickness(36, 24, 0, 0)
+            };
+
+            System.Windows.Controls.Image qrCode = new System.Windows.Controls.Image()
+            {
+                Source = new BitmapImage(new Uri(imagePath, UriKind.Absolute)),
+                Name = "imgQrCode",
+                Height = 100,
+                Width = 100,
+                Margin = new Thickness(0, 0, 6, 0)
+            };
+
+            TextBlock userName = new TextBlock()
+            {
+                Text = username,
+                Name = "txblkUserName",
+                Foreground = new SolidColorBrush(Colors.White),
+                FontSize = 32,
+                Margin = new Thickness(0, 12, 0, 0)
+            };
+
+
+            userStack.Children.Add(qrCode);
+            userStack.Children.Add(userName);
+            return userStack;
         }
     }
 }

@@ -1,10 +1,9 @@
 ﻿using Computer_Wifi_Remote_Library;
+using Computer_Wifi_Remote_Library.Connection;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using WebSocketSharp;
 
 namespace Computer_Wifi_Remote.Command
 {
@@ -32,9 +31,9 @@ namespace Computer_Wifi_Remote.Command
             return null;
         }
 
-        public static void ExecuteRemotely(WebSocket webSocket, Request request)
+        public static void ExecuteRemotely(IConnection connection, Request request)
         {
-            webSocket.Send(JsonConvert.SerializeObject(request));
+            connection.Send(JsonConvert.SerializeObject(request));
         }
     }
 }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using WebSocketSharp;
+﻿using WebSocketSharp;
 
 namespace Computer_Wifi_Remote_Xamarin.Services
 {

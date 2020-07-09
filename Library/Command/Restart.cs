@@ -1,5 +1,4 @@
 ﻿using Computer_Wifi_Remote_Library;
-using System;
 using System.Diagnostics;
 
 namespace Computer_Wifi_Remote.Command

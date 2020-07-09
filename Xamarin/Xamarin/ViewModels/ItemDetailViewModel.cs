@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 using Computer_Wifi_Remote_Xamarin.Models;
 
 namespace Computer_Wifi_Remote_Xamarin.ViewModels

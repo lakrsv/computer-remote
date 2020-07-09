@@ -3,10 +3,6 @@ using Computer_Wifi_Remote_Library;
 using Computer_Wifi_Remote_Library.Command;
 using Computer_Wifi_Remote_Xamarin.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;

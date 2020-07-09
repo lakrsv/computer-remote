@@ -1,9 +1,5 @@
 ﻿using Computer_Wifi_Remote.Command;
 using NAudio.CoreAudioApi;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
 
 namespace Computer_Wifi_Remote_Library.Command
 {

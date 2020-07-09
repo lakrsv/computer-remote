@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
-using Computer_Wifi_Remote_Xamarin.Models;
-using Computer_Wifi_Remote_Xamarin.Views;
+﻿using Computer_Wifi_Remote_Xamarin.Models;
 using Computer_Wifi_Remote_Xamarin.ViewModels;
+using System.ComponentModel;
+using Xamarin.Forms;
 
 namespace Computer_Wifi_Remote_Xamarin.Views
 {

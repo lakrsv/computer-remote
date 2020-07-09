@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Computer_Wifi_Remote_Xamarin.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Computer_Wifi_Remote_Xamarin.Models;
 using Xamarin.Views.Actions;
 
 namespace Computer_Wifi_Remote_Xamarin.Services
