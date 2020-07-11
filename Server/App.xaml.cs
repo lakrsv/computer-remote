@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Server.Properties;
+using System;
 using System.Drawing;
 using System.IO;
 using System.Windows;
@@ -16,6 +17,7 @@ namespace Server
     {
         private ServerBootstrap server;
         private NotifyIcon notifyIcon;
+        private System.Windows.Forms.CheckBox checkBox;
 
         private void Application_Exit(object sender, ExitEventArgs e)
         {
@@ -24,6 +26,8 @@ namespace Server
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            System.Windows.Forms.Application.EnableVisualStyles();
+
             server = new ServerBootstrap();
             server.Start();
 
@@ -45,14 +49,16 @@ namespace Server
 
             notifyIcon.ContextMenuStrip = menuStrip;
 
-            Connect_Click(null, null);
+            if (Settings.Default.AskToPair) { 
+                Connect_Click(null, null);
+            }
         }
 
         private void Connect_Click(object sender, EventArgs e)
         {
             using (var form = new Form())
             {
-                form.Text = "Connect";
+                form.Text = "Connect your device";
                 form.Size = new System.Drawing.Size(512, 512);
 
                 Bitmap qrCodeImage;
@@ -74,16 +80,45 @@ namespace Server
                     SizeMode = PictureBoxSizeMode.Zoom,
                     Dock = DockStyle.Fill,
                 };
-                var panel = new System.Windows.Forms.TableLayoutPanel()
+                checkBox = new System.Windows.Forms.CheckBox();
+                checkBox.Text = "Do not ask me again";
+                checkBox.AutoSize = false;
+                checkBox.Size = new System.Drawing.Size(512, 50);
+                checkBox.Appearance = Appearance.Normal;
+                checkBox.CheckState = Settings.Default.AskToPair ? CheckState.Unchecked : CheckState.Checked;
+                checkBox.CheckStateChanged += CheckBox_CheckStateChanged;
+                checkBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+
+                var panel = new TableLayoutPanel()
                 {
                     Padding = new Padding(10),
                     Dock = DockStyle.Fill
                 };
-                panel.Controls.Add(label);
-                panel.Controls.Add(pictureBox);
+
+                panel.ColumnCount = 1;
+                panel.RowCount = 3;
+
+                panel.RowStyles.Add(new RowStyle(SizeType.Percent, 10));
+                panel.RowStyles.Add(new RowStyle(SizeType.Percent, 85));
+                panel.RowStyles.Add(new RowStyle(SizeType.Percent, 5));
+
+
+
+                panel.Controls.Add(label, 0, 0);
+                panel.Controls.Add(pictureBox, 0, 1);
+                panel.Controls.Add(checkBox, 0, 2);
                 form.Controls.Add(panel);
+                form.FormBorderStyle = FormBorderStyle.FixedDialog;
+                form.Icon = new Icon("Resources/icons8-remote-control-dark-32.ico");
+
                 form.ShowDialog();
             }
+        }
+
+        private void CheckBox_CheckStateChanged(object sender, EventArgs e)
+        {
+            Settings.Default.AskToPair = !checkBox.Checked;
+            Settings.Default.Save();
         }
 
         private StackPanel CreateUI(string imagePath, string username)
