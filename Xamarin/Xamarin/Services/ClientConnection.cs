@@ -1,6 +1,4 @@
 ﻿using Computer_Wifi_Remote_Library.Connection;
-using System;
-using WebSocketSharp;
 
 namespace Computer_Wifi_Remote_Xamarin.Services
 {

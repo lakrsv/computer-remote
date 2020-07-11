@@ -1,6 +1,5 @@
 ﻿using Microsoft.Win32;
 using QRCoder;
-using Server.Http;
 using Server.Security;
 using System.Windows.Forms;
 using WebSocketSharp.Server;
