@@ -31,8 +31,6 @@ namespace Xamarin.Views.Actions
                     {
                         // TODO - This won't work. High GC overhead and serious latency
                         ScreenCapture.Source = ImageSource.FromStream(() => new MemoryStream(response.Payload));
-
-
                         //viewModel.UpdateImage(response.Payload);
                     }
                 }
