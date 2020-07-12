@@ -3,15 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              mc:Ignorable="d"
              x:Class="Xamarin.Views.Actions.RemoteControlPage"
              Title="Remote Control">
     <ContentPage.Content>
-        <Image x:Name="ScreenCapture">
-            <Image.GestureRecognizers>
+        <forms:CachedImage 
+            x:Name="ScreenCapture"        
+            >
+            <!--<Image.GestureRecognizers>
                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"
                                       NumberOfTapsRequired="1"/>
-            </Image.GestureRecognizers>
-        </Image>
+            </Image.GestureRecognizers>-->
+        </forms:CachedImage>
     </ContentPage.Content>
 </ContentPage>

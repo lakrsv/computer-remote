@@ -3,6 +3,7 @@ using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
+using FFImageLoading.Forms.Platform;
 
 namespace Computer_Wifi_Remote_Xamarin.Droid
 {
@@ -18,6 +19,9 @@ namespace Computer_Wifi_Remote_Xamarin.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+
+            CachedImageRenderer.Init(enableFastRenderer: true);
+            CachedImageRenderer.InitImageViewHandler();
 
             var app = new App();
             ZXing.Mobile.MobileBarcodeScanner.Initialize(Application);

@@ -1,4 +1,5 @@
-﻿using UIKit;
+﻿using FFImageLoading.Forms.Platform;
+using UIKit;
 
 namespace Computer_Wifi_Remote_Xamarin.iOS
 {
@@ -9,6 +10,8 @@ namespace Computer_Wifi_Remote_Xamarin.iOS
         {
             // if you want to use a different Application Delegate class from "AppDelegate"
             // you can specify it here.
+            CachedImageRenderer.Init();
+            CachedImageRenderer.InitImageSourceHandler();
             UIApplication.Main(args, null, "AppDelegate");
         }
     }

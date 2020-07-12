@@ -18,7 +18,7 @@ namespace Computer_Wifi_Remote_Library.Command
         {
             var image = screenCapture.CaptureScreen();
             using var ms = new MemoryStream();
-            image.Save(ms, ImageFormat.Png);
+            image.Save(ms, ImageFormat.Jpeg);
             return new BytesResponsePayload(true, ms.ToArray(), new ResponseMetadata(GetType()));
         }
     }

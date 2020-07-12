@@ -22,6 +22,7 @@ namespace Xamarin.Views.Actions
 
             ClientConnection.Instance.Connection.OnMessageReceived += (sender, e) =>
             {
+
                 Debug.WriteLine("Got message");
                 if (e.IsBinary)
                 {
@@ -29,7 +30,7 @@ namespace Xamarin.Views.Actions
 
                     if (response.Metadata.Source == typeof(DisplayScreen))
                     {
-                        // TODO - This won't work. High GC overhead and serious latency
+                        // TODO - This won't work. High GC overhead and serious latency. Take a look at SkiaSharp!
                         ScreenCapture.Source = ImageSource.FromStream(() => new MemoryStream(response.Payload));
                         //viewModel.UpdateImage(response.Payload);
                     }
@@ -42,7 +43,7 @@ namespace Xamarin.Views.Actions
                 while (!cancellationToken.IsCancellationRequested)
                 {
                     Commands.ExecuteRemotely(ClientConnection.Instance.Connection, new Request(nameof(DisplayScreen)));
-                    await Task.Delay(1000);
+                    await Task.Delay(32);
                 }
             });
         }
