@@ -4,6 +4,7 @@ namespace Computer_Wifi_Remote_Library.Connection
     public class WebSocketConnection : IConnection
     {
         private WebSocketSharp.WebSocket webSocket;
+        public event System.EventHandler<WebSocketSharp.MessageEventArgs> OnMessageReceived;
 
         public WebSocketConnection(WebSocketSharp.WebSocket webSocket, string username, string password)
         {
@@ -13,6 +14,8 @@ namespace Computer_Wifi_Remote_Library.Connection
                 // Ignore SSL validation
                 return true;
             };
+            webSocket.OnMessage += OnMessageReceived;
+
             this.webSocket.SetCredentials(username, password, true);
             this.webSocket.Connect();
         }

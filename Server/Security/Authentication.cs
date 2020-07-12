@@ -1,4 +1,4 @@
-﻿//#define LOCAL
+﻿#define LOCAL
 
 using Computer_Wifi_Remote_Library;
 using Computer_Wifi_Remote_Library.Connection;
@@ -13,7 +13,7 @@ namespace Server.Security
 {
     public class Authentication
     {
-        private readonly string TOKEN_ENVIRONMENT_KEY = $"{Constants.ORGANIZATION_NAME}_{Constants.APP_NAME}";
+        private readonly string TOKEN_ENVIRONMENT_KEY = $"{AppConstants.ORGANIZATION_NAME}_{AppConstants.APP_NAME}";
         private PngByteQRCode connectionQRCode;
 
 

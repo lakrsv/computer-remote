@@ -1,17 +1,19 @@
 ﻿using Computer_Wifi_Remote.Command;
+using Computer_Wifi_Remote_Library.Response;
 using NAudio.CoreAudioApi;
 
 namespace Computer_Wifi_Remote_Library.Command
 {
-    public class MuteVolume : ICommand
+    public class MuteVolume : ICommand<bool>
     {
         public string Name => nameof(MuteVolume);
+        public bool HasPayload => false;
 
         private MMDevice defaultPlaybackDevice;
 
-        public bool Execute(Request request)
+        public IResponsePayload<bool> Execute(Request request)
         {
-            if (!bool.TryParse(request.Parameters[0], out bool mute)) return false;
+            if (!bool.TryParse(request.Parameters[0], out bool mute)) return ResponsePayload<bool>.NoPayloadFailure();
 
             if (defaultPlaybackDevice == null)
             {
@@ -21,7 +23,7 @@ namespace Computer_Wifi_Remote_Library.Command
 
             defaultPlaybackDevice.AudioEndpointVolume.Mute = mute;
 
-            return true;
+            return ResponsePayload<bool>.NoPayloadSuccess();
         }
     }
 }

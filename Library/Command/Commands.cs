@@ -9,23 +9,23 @@ namespace Computer_Wifi_Remote.Command
 {
     public static class Commands
     {
-        private static Dictionary<string, ICommand> commands;
+        private static Dictionary<string, ICommand<bool>> noPayloadCommands;
 
         static Commands()
         {
-            var commandType = typeof(ICommand);
-            commands = AppDomain.CurrentDomain.GetAssemblies()
+            var noResponseCommandType = typeof(ICommand<bool>);
+            noPayloadCommands = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(s => s.GetTypes())
-                .Where(p => commandType.IsAssignableFrom(p) && !p.IsInterface && !p.IsAbstract)
-                .Select(t => (ICommand)Activator.CreateInstance(t))
+                .Where(p => noResponseCommandType.IsAssignableFrom(p) && !p.IsInterface && !p.IsAbstract)
+                .Select(t => (ICommand<bool>)Activator.CreateInstance(t))
                 .ToDictionary(k => k.Name, StringComparer.InvariantCultureIgnoreCase);
         }
 
-        public static ICommand GetCommand(string name)
+        public static ICommand<bool> GetCommand(string name)
         {
-            if (commands.ContainsKey(name))
+            if (noPayloadCommands.ContainsKey(name))
             {
-                return commands[name];
+                return noPayloadCommands[name];
             }
 
             return null;

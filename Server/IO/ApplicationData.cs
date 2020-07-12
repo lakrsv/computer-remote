@@ -9,7 +9,7 @@ namespace Server.IO
         public static string GetPath(string fileName)
         {
             var directory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            return Path.Combine(directory, Constants.ORGANIZATION_NAME, Constants.APP_NAME, fileName);
+            return Path.Combine(directory, AppConstants.ORGANIZATION_NAME, AppConstants.APP_NAME, fileName);
         }
         public static void Write(byte[] bytes, string fileName)
         {

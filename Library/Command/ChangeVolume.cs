@@ -1,17 +1,19 @@
 ﻿using Computer_Wifi_Remote.Command;
+using Computer_Wifi_Remote_Library.Response;
 using NAudio.CoreAudioApi;
 
 namespace Computer_Wifi_Remote_Library.Command
 {
-    public class ChangeVolume : ICommand
+    public class ChangeVolume : ICommand<bool>
     {
         public string Name => nameof(ChangeVolume);
+        public bool HasPayload => false;
 
         private MMDevice defaultPlaybackDevice;
 
-        public bool Execute(Request request)
+        public IResponsePayload<bool> Execute(Request request)
         {
-            if (!float.TryParse(request.Parameters[0], out float volumeChange)) return false;
+            if (!float.TryParse(request.Parameters[0], out float volumeChange)) return ResponsePayload<bool>.NoPayloadFailure();
 
             if (defaultPlaybackDevice == null)
             {
@@ -20,7 +22,7 @@ namespace Computer_Wifi_Remote_Library.Command
             }
 
             defaultPlaybackDevice.AudioEndpointVolume.MasterVolumeLevelScalar = volumeChange;
-            return true;
+            return ResponsePayload<bool>.NoPayloadSuccess();
         }
     }
 }

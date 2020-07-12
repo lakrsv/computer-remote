@@ -12,7 +12,7 @@ namespace Server.Security
     {
         private const string COMMON_NAME = "Temporalis WindowsRemote SSL CA";
         private const string CERT_FILE_NAME = "TemporalisWindowsRemote.cert";
-        private static readonly string CERT_DISTINGUISHED_NAME = $"C=UK, O={Constants.ORGANIZATION_NAME}, OU={Constants.ORGANIZATION_NAME}, CN={COMMON_NAME}";
+        private static readonly string CERT_DISTINGUISHED_NAME = $"C=UK, O={AppConstants.ORGANIZATION_NAME}, OU={AppConstants.ORGANIZATION_NAME}, CN={COMMON_NAME}";
 
         public X509Certificate2 Certificate { get; }
 
