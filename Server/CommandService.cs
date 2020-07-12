@@ -11,7 +11,7 @@ namespace Server
         protected override void OnMessage(MessageEventArgs e)
         {
             var request = JsonConvert.DeserializeObject<Request>(e.Data);
-            var command = Commands.GetCommand(request.Command);
+            var command = Commands.GetNoPayloadCommand(request.Command);
             if (command != null)
             {
                 command.Execute(request);

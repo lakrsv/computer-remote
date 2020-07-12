@@ -23,7 +23,14 @@ namespace Computer_Wifi_Remote_Client
                 while (nextLine.ToLowerInvariant() != "quit")
                 {
                     var commands = nextLine.Split(' ');
-                    Commands.ExecuteRemotely(connection, new Request(commands[0], commands.SubArray(1, commands.Length - 1)));
+                    if (!Commands.CommandHasPayload(commands[0]))
+                    {
+                        Commands.ExecuteRemotely(connection, new Request(commands[0], commands.SubArray(1, commands.Length - 1)));
+                    }
+                    else
+                    {
+                        Console.WriteLine("The console app does not support running payload commands");
+                    }
                     nextLine = Console.ReadLine();
                 }
             }

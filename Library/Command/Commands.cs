@@ -21,7 +21,12 @@ namespace Computer_Wifi_Remote.Command
                 .ToDictionary(k => k.Name, StringComparer.InvariantCultureIgnoreCase);
         }
 
-        public static ICommand<bool> GetCommand(string name)
+        public static bool CommandHasPayload(string name)
+        {
+            return !noPayloadCommands.ContainsKey(name);
+        }
+
+        public static ICommand<bool> GetNoPayloadCommand(string name)
         {
             if (noPayloadCommands.ContainsKey(name))
             {

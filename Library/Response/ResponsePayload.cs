@@ -22,5 +22,15 @@ namespace Computer_Wifi_Remote_Library
         {
             return new ResponsePayload<bool>(false, false);
         }
+
+        public static ResponsePayload<T> PayloadSuccess(T payload)
+        {
+            return new ResponsePayload<T>(true, payload);
+        }
+
+        public static ResponsePayload<T> PayloadFailure(T payload)
+        {
+            return new ResponsePayload<T>(true, payload);
+        }
     }
 }

@@ -3,14 +3,16 @@ using Computer_Wifi_Remote_Library.Response;
 
 namespace Computer_Wifi_Remote_Library.Command
 {
-    public class PreviousTrack : ICommand<bool>
+    public class PlayStop : ICommand<bool>
     {
-        public string Name => nameof(PreviousTrack);
+        public string Name => nameof(PlayStop);
         public bool HasPayload => false;
+
+        private Audio audio = new Audio();
 
         public IResponsePayload<bool> Execute(Request request)
         {
-            Audio.PreviousTrack();
+            audio.PlayStop();
             return ResponsePayload<bool>.NoPayloadSuccess();
         }
     }
