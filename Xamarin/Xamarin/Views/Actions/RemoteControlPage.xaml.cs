@@ -19,22 +19,24 @@ namespace Xamarin.Views.Actions
         public RemoteControlPage()
         {
             InitializeComponent();
-
-            ClientConnection.Instance.Connection.OnMessageReceived += (sender, e) =>
+            ClientConnection.Instance.Connection.OnMessageReceived += async (sender, e) =>
             {
-
-                Debug.WriteLine("Got message");
-                if (e.IsBinary)
+                await Task.Run(() =>
                 {
-                    var response = BytesResponsePayload.Deserialize(e.RawData);
-
-                    if (response.Metadata.Source == typeof(DisplayScreen))
+                    Debug.WriteLine("Got message");
+                    if (e.IsBinary)
                     {
-                        // TODO - This won't work. High GC overhead and serious latency. Take a look at SkiaSharp!
-                        ScreenCapture.Source = ImageSource.FromStream(() => new MemoryStream(response.Payload));
-                        //viewModel.UpdateImage(response.Payload);
+                        var response = BytesResponsePayload.Deserialize(e.RawData);
+
+                        if (response.Metadata.Source == typeof(DisplayScreen))
+                        {
+                            // TODO - This won't work. High GC overhead and serious latency. Take a look at SkiaSharp!
+                            ScreenCapture.Source = ImageSource.FromStream(() => new MemoryStream(response.Payload));
+                            ScreenCapture.ReloadImage();
+                            //viewModel.UpdateImage(response.Payload);
+                        }
                     }
-                }
+                });
             };
 
             cancellationToken = new CancellationToken();
