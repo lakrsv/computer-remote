@@ -18,6 +18,7 @@ namespace Computer_Wifi_Remote_Xamarin.Services
                 new Item { Id = Guid.NewGuid().ToString(), Text = "Hello World", Description="Sends Hello World to the server.", Page = new HelloWorldPage() },
                 new Item { Id = Guid.NewGuid().ToString(), Text = "Media Control", Description="Various controls for media.", Page=new MediaControlPage() },
                 new Item { Id = Guid.NewGuid().ToString(), Text = "System Control", Description="Various controls for the system.", Page=new SystemControlPage() },
+                new Item { Id = Guid.NewGuid().ToString(), Text = "Remote Control", Description="Remote control your device.", Page = new RemoteControlPage()},
             };
         }
 

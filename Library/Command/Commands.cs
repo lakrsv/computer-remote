@@ -1,4 +1,5 @@
 ﻿using Computer_Wifi_Remote_Library;
+using Computer_Wifi_Remote_Library.Command;
 using Computer_Wifi_Remote_Library.Connection;
 using Newtonsoft.Json;
 using System;
@@ -9,31 +10,26 @@ namespace Computer_Wifi_Remote.Command
 {
     public static class Commands
     {
-        private static Dictionary<string, ICommand<bool>> noPayloadCommands;
+        private static Dictionary<string, IBytesCommand> bytesCommands;
 
         static Commands()
         {
-            var noResponseCommandType = typeof(ICommand<bool>);
-            noPayloadCommands = AppDomain.CurrentDomain.GetAssemblies()
+            var commandType = typeof(IBytesCommand);
+            bytesCommands = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(s => s.GetTypes())
-                .Where(p => noResponseCommandType.IsAssignableFrom(p) && !p.IsInterface && !p.IsAbstract)
-                .Select(t => (ICommand<bool>)Activator.CreateInstance(t))
+                .Where(p => commandType.IsAssignableFrom(p) && !p.IsInterface && !p.IsAbstract)
+                .Select(t => (IBytesCommand)Activator.CreateInstance(t))
                 .ToDictionary(k => k.Name, StringComparer.InvariantCultureIgnoreCase);
         }
 
         public static bool CommandHasPayload(string name)
         {
-            return !noPayloadCommands.ContainsKey(name);
+            return bytesCommands.ContainsKey(name) && bytesCommands[name].HasPayload;
         }
 
-        public static ICommand<bool> GetNoPayloadCommand(string name)
+        public static IBytesCommand GetBytesCommand(string name)
         {
-            if (noPayloadCommands.ContainsKey(name))
-            {
-                return noPayloadCommands[name];
-            }
-
-            return null;
+            return bytesCommands.ContainsKey(name) ? bytesCommands[name] : null;
         }
 
         public static void ExecuteRemotely(IConnection connection, Request request)

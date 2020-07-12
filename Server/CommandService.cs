@@ -11,10 +11,14 @@ namespace Server
         protected override void OnMessage(MessageEventArgs e)
         {
             var request = JsonConvert.DeserializeObject<Request>(e.Data);
-            var command = Commands.GetNoPayloadCommand(request.Command);
+            var command = Commands.GetBytesCommand(request.Command);
             if (command != null)
             {
-                command.Execute(request);
+                var response = command.Execute(request);
+                if (command.HasPayload)
+                {
+                    Send(response.Serialize());
+                }
             }
         }
     }

@@ -1,4 +1,4 @@
-﻿#define LOCAL
+﻿//#define LOCAL
 
 using Computer_Wifi_Remote_Library;
 using Computer_Wifi_Remote_Library.Connection;

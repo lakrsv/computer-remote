@@ -1,18 +1,19 @@
 ﻿using Computer_Wifi_Remote.Command;
 using Computer_Wifi_Remote_Library.Response;
 using System;
+using System.Text;
 
 namespace Computer_Wifi_Remote_Library.Command
 {
-    public class HelloWorld : ICommand<bool>
+    public class HelloWorld : IBytesCommand
     {
         public string Name => nameof(HelloWorld);
-        public bool HasPayload => false;
+        public bool HasPayload => true;
 
-        public IResponsePayload<bool> Execute(Request request)
+        public IResponsePayload<byte[]> Execute(Request request)
         {
             Console.WriteLine("Hello World!");
-            return ResponsePayload<bool>.NoPayloadSuccess();
+            return BytesResponsePayload.PayloadSuccess(Encoding.UTF8.GetBytes("Hello World"), new ResponseMetadata(GetType()));
         }
     }
 }

@@ -5,5 +5,6 @@ namespace Computer_Wifi_Remote_Library.Connection
     {
         bool IsAlive { get; }
         void Send(string command);
+        event System.EventHandler<WebSocketSharp.MessageEventArgs> OnMessageReceived;
     }
 }
